@@ -41,6 +41,26 @@ def find_distance(x1, y1, x2, y2):
     return distance
 
 
+def thumbs_up(position_list):
+    point1x = position_list[1][0]
+    point1y = position_list[1][1]
+    point2x = position_list[2][0]
+    point2y = position_list[2][1]
+    point3x = position_list[3][0]
+    point3y = position_list[3][1]
+    point4x = position_list[4][0]
+    point4y = position_list[4][1]
+    flag = False
+    angle1 = find_angle(point1x, point1y, point2x, point2y, point3x, point3y)
+    angle2 = find_angle(point2x, point2y, point3x, point3y, point4x, point4y)
+    if angle1 > 170 and angle2 > 150:
+        flag = True
+    # print("angle1,2,3:", angle1)
+    # print("angle2,3,4:", angle2)
+    # print()
+    return flag
+
+
 def index_finger_up(position_list):
     point5x = position_list[5][0]
     point5y = position_list[5][1]
@@ -80,10 +100,9 @@ def index_finger_up(position_list):
     angle2 = find_angle(point6x, point6y, point7x, point7y, point8x, point8y)
     if angle1 > 170 and angle2 > 170:
         flag = True
-    # else:
-    #     print(angle1)
-    #     print(angle2)
-    #     print()
+    print("angle5,6,7:", angle1)
+    print("angle6,7,8:", angle2)
+    print()
     return flag
 
 
@@ -99,7 +118,53 @@ def middle_finger_up(position_list):
     flag = False
     angle1 = find_angle(point9x, point9y, point10x, point10y, point11x, point11y)
     angle2 = find_angle(point10x, point10y, point11x, point11y, point12x, point12y)
+    if angle1 > 165 and angle2 > 165:
+        flag = True
+    print("angle9,10,11:", angle1)
+    print("angle10,11,12:", angle2)
+    print()
+    return flag
+
+
+def ring_finger_up(position_list):
+    point13x = position_list[13][0]
+    point13y = position_list[13][1]
+    point14x = position_list[14][0]
+    point14y = position_list[14][1]
+    point15x = position_list[15][0]
+    point15y = position_list[15][1]
+    point16x = position_list[16][0]
+    point16y = position_list[16][1]
+    flag = False
+    angle1 = find_angle(point13x, point13y, point14x, point14y, point15x, point15y)
+    angle2 = find_angle(point14x, point14y, point15x, point15y, point16x, point16y)
     if angle1 > 170 and angle2 > 170:
         flag = True
+    print("angle13,14,15:", angle1)
+    print("angle14,15,16:", angle2)
+    print()
     return flag
+
+
+def little_finger_up(position_list):
+    point17x = position_list[17][0]
+    point17y = position_list[17][1]
+    point18x = position_list[18][0]
+    point18y = position_list[18][1]
+    point19x = position_list[19][0]
+    point19y = position_list[19][1]
+    point20x = position_list[20][0]
+    point20y = position_list[20][1]
+    flag = False
+    angle1 = find_angle(point17x, point17y, point18x, point18y, point19x, point19y)
+    angle2 = find_angle(point18x, point18y, point19x, point19y, point20x, point20y)
+    if angle1 > 170 and angle2 > 170:
+        flag = True
+    print("angle17,18,19:", angle1)
+    print("angle18,19,20:", angle2)
+    print()
+    return flag
+
+
+
 
