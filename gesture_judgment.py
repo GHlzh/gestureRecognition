@@ -100,9 +100,9 @@ def index_finger_up(position_list):
     angle2 = find_angle(point6x, point6y, point7x, point7y, point8x, point8y)
     if angle1 > 170 and angle2 > 170:
         flag = True
-    print("angle5,6,7:", angle1)
-    print("angle6,7,8:", angle2)
-    print()
+    # print("angle5,6,7:", angle1)
+    # print("angle6,7,8:", angle2)
+    # print()
     return flag
 
 
@@ -120,9 +120,9 @@ def middle_finger_up(position_list):
     angle2 = find_angle(point10x, point10y, point11x, point11y, point12x, point12y)
     if angle1 > 165 and angle2 > 165:
         flag = True
-    print("angle9,10,11:", angle1)
-    print("angle10,11,12:", angle2)
-    print()
+    # print("angle9,10,11:", angle1)
+    # print("angle10,11,12:", angle2)
+    # print()
     return flag
 
 
@@ -140,9 +140,9 @@ def ring_finger_up(position_list):
     angle2 = find_angle(point14x, point14y, point15x, point15y, point16x, point16y)
     if angle1 > 170 and angle2 > 170:
         flag = True
-    print("angle13,14,15:", angle1)
-    print("angle14,15,16:", angle2)
-    print()
+    # print("angle13,14,15:", angle1)
+    # print("angle14,15,16:", angle2)
+    # print()
     return flag
 
 
@@ -160,10 +160,91 @@ def little_finger_up(position_list):
     angle2 = find_angle(point18x, point18y, point19x, point19y, point20x, point20y)
     if angle1 > 170 and angle2 > 170:
         flag = True
-    print("angle17,18,19:", angle1)
-    print("angle18,19,20:", angle2)
-    print()
+    # print("angle17,18,19:", angle1)
+    # print("angle18,19,20:", angle2)
+    # print()
     return flag
+
+
+def is_one(position_list):
+    string_flag = 'None'
+    flag = False
+    if thumbs_up(position_list):
+        string_flag = "great"
+        flag = True
+    elif index_finger_up(position_list):
+        string_flag = 'one'
+        flag = True
+    elif middle_finger_up(position_list):
+        string_flag = 'despise'
+        flag = True
+    elif little_finger_up(position_list):
+        string_flag = 'weak'
+        flag = True
+    return flag, string_flag
+
+
+def is_two(position_list):
+    string_flag = 'None'
+    flag = False
+    if index_finger_up(position_list) and middle_finger_up(position_list):
+        flag = True
+        string_flag = 'ye'
+    elif thumbs_up(position_list) and index_finger_up(position_list):
+        flag = True
+        string_flag = 'gun'
+    return flag, string_flag
+
+
+def is_three(position_list):
+    string_flag = 'None'
+    flag = False
+    if thumbs_up(position_list) and index_finger_up(position_list) and middle_finger_up(position_list):
+        flag = True
+        string_flag = 'three-pointer'
+    elif index_finger_up(position_list) and middle_finger_up(position_list) and ring_finger_up(position_list):
+        flag = True
+        string_flag = 'claw'
+    elif middle_finger_up(position_list) and ring_finger_up(position_list)  and little_finger_up(position_list):
+        flag = True
+        string_flag = 'ok'
+    return flag, string_flag
+
+
+def is_four(position_list):
+    string_flag = 'None'
+    flag = False
+    if index_finger_up(position_list) and middle_finger_up(position_list) \
+            and ring_finger_up(position_list) and little_finger_up(position_list):
+        flag = True
+        string_flag = 'four'
+    return flag, string_flag
+
+
+def is_five(position_list):
+    string_flag = 'None'
+    flag = False
+    if thumbs_up(position_list) and index_finger_up(position_list) and middle_finger_up(position_list) \
+            and ring_finger_up(position_list) and little_finger_up(position_list):
+        flag = True
+        string_flag = 'find'
+    return flag, string_flag
+
+
+def judge_hands(position_list):
+    string_flag = 'None'
+    if is_five(position_list)[0]:
+        string_flag = is_five(position_list)[1]
+    elif is_four(position_list)[0]:
+        string_flag = is_four(position_list)[1]
+    elif is_three(position_list)[0]:
+        string_flag = is_three(position_list)[1]
+    elif is_two(position_list)[0]:
+        string_flag = is_two(position_list)[1]
+    elif is_one(position_list)[0]:
+        string_flag = is_one(position_list)[1]
+    return string_flag
+
 
 
 
